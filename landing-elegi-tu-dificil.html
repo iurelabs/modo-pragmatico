@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elegí tu difícil — Modo Pragmático</title>
+<meta name="description" content="No hay un camino fácil. Vas a sufrir igual — la pregunta es con qué resultado. Guía práctica de Modo Pragmático.">
+<style>
+  :root{
+    --bg:#0a0a0a;
+    --panel:#121212;
+    --card:#1a1a1a;
+    --border:#2a2a2a;
+    --yellow:#f5b400;
+    --text:#f2f2f2;
+    --text-dim:#9a9a9a;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.6;
+  }
+  h1,h2,h3{
+    font-family:'Arial Black','Arial Narrow',Impact,sans-serif;
+    text-transform:uppercase;
+    font-weight:900;
+    letter-spacing:-0.01em;
+    line-height:1.08;
+  }
+  .accent{color:var(--yellow);}
+  .wrap{max-width:680px;margin:0 auto;padding:0 24px;}
+  .section{padding:72px 0;}
+  .section-alt{background:var(--panel);}
+  .eyebrow{
+    display:flex;align-items:center;gap:8px;justify-content:center;
+    font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-dim);
+    font-weight:700;margin-bottom:18px;
+  }
+  .eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--yellow);}
+
+  /* HERO */
+  #hero{
+    position:relative;
+    padding:110px 0 90px;
+    text-align:center;
+    background:
+      radial-gradient(circle at 50% 0%, #1f1f1f 0%, #0a0a0a 65%);
+    overflow:hidden;
+  }
+  #hero::before{
+    content:'';position:absolute;inset:0;
+    background-image:repeating-linear-gradient(115deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 46px);
+    pointer-events:none;
+  }
+  #hero h1{font-size:clamp(30px,5.4vw,46px);margin-bottom:22px;position:relative;}
+  #hero .lead{
+    font-size:17px;color:#d6d6d6;max-width:520px;margin:0 auto 34px;position:relative;
+  }
+  .btn{
+    display:inline-block;background:var(--yellow);color:#0a0a0a;
+    font-weight:800;text-transform:uppercase;letter-spacing:.03em;
+    font-size:15px;padding:16px 34px;border-radius:6px;border:none;cursor:pointer;
+    text-decoration:none;transition:filter .15s ease, transform .15s ease;
+  }
+  .btn:hover{filter:brightness(1.08);transform:translateY(-1px);}
+  .btn-block{width:100%;text-align:center;}
+  .microcopy{font-size:12.5px;color:var(--text-dim);margin-top:14px;}
+
+  /* AGITATION */
+  .pain-list{list-style:none;margin:26px 0;}
+  .pain-list li{
+    padding:14px 0 14px 26px;border-top:1px solid var(--border);
+    position:relative;color:#d8d8d8;font-size:15.5px;
+  }
+  .pain-list li:last-child{border-bottom:1px solid var(--border);}
+  .pain-list li::before{content:'—';position:absolute;left:0;color:var(--yellow);}
+  .punch{
+    margin-top:30px;font-size:19px;font-weight:700;text-align:center;
+    color:var(--text);
+  }
+  .punch .accent{display:block;font-size:23px;margin-top:4px;}
+
+  /* MECHANISM */
+  .split{
+    display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:30px;
+  }
+  @media(max-width:560px){.split{grid-template-columns:1fr;}}
+  .split-card{
+    background:var(--card);border:1px solid var(--border);border-radius:8px;padding:22px;
+  }
+  .split-card h3{font-size:15px;color:var(--yellow);margin-bottom:10px;}
+  .split-card p{font-size:14.5px;color:var(--text-dim);}
+
+  /* INCLUDES */
+  .includes{list-style:none;margin-top:26px;}
+  .includes li{
+    display:flex;gap:12px;padding:13px 0;border-top:1px solid var(--border);font-size:15px;color:#dedede;
+  }
+  .includes li:last-child{border-bottom:1px solid var(--border);}
+  .includes li .chk{color:var(--yellow);font-weight:900;flex-shrink:0;}
+
+  /* QUALIFY */
+  .qual-grid{display:grid;grid-template-columns:1fr;gap:10px;margin-top:24px;}
+  .qual-row{
+    display:flex;gap:12px;padding:12px 14px;border-radius:6px;font-size:14.5px;
+  }
+  .qual-yes{background:rgba(245,180,0,0.07);border:1px solid rgba(245,180,0,0.25);}
+  .qual-no{background:rgba(255,255,255,0.03);border:1px solid var(--border);color:var(--text-dim);}
+
+  /* OFFER */
+  #offer{
+    background:var(--panel);
+    border-top:1px solid var(--border);
+    border-bottom:1px solid var(--border);
+  }
+  .offer-card{
+    background:var(--card);border:1px solid var(--border);border-radius:12px;
+    padding:30px;margin-top:20px;
+  }
+  .badge{
+    display:inline-block;background:rgba(245,180,0,0.12);color:var(--yellow);
+    font-size:11.5px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;
+    padding:5px 10px;border-radius:4px;margin-bottom:14px;
+  }
+  .offer-title{font-size:20px;margin-bottom:6px;}
+  .price-row{display:flex;align-items:baseline;gap:10px;margin:14px 0 20px;}
+  .price-now{font-size:38px;font-weight:900;color:var(--yellow);font-family:'Arial Black',sans-serif;}
+  .price-old{font-size:16px;color:var(--text-dim);text-decoration:line-through;}
+
+  .bump{
+    margin-top:20px;padding:16px;border:1.5px dashed var(--yellow);border-radius:8px;
+    background:rgba(245,180,0,0.05);
+  }
+  .bump label{display:flex;gap:12px;align-items:flex-start;cursor:pointer;font-size:14px;color:#e6e6e6;}
+  .bump input{margin-top:3px;width:18px;height:18px;accent-color:var(--yellow);flex-shrink:0;}
+  .bump b{color:var(--yellow);}
+
+  .total-row{
+    display:flex;justify-content:space-between;align-items:center;
+    margin:22px 0 18px;padding-top:16px;border-top:1px solid var(--border);
+    font-size:14px;color:var(--text-dim);
+  }
+  #totalPrice{font-size:22px;font-weight:900;color:var(--text);font-family:'Arial Black',sans-serif;}
+
+  .trust-row{
+    display:flex;flex-direction:column;gap:8px;margin-top:22px;font-size:13px;color:var(--text-dim);
+  }
+
+  /* FAQ */
+  .faq-item{border-top:1px solid var(--border);}
+  .faq-item:last-child{border-bottom:1px solid var(--border);}
+  .faq-q{
+    width:100%;background:none;border:none;color:var(--text);text-align:left;
+    padding:18px 0;font-size:15.5px;font-weight:700;cursor:pointer;
+    display:flex;justify-content:space-between;align-items:center;gap:12px;
+  }
+  .faq-q .plus{color:var(--yellow);font-size:20px;transition:transform .2s;flex-shrink:0;}
+  .faq-item.open .plus{transform:rotate(45deg);}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .25s ease;font-size:14.5px;color:var(--text-dim);}
+  .faq-a p{padding-bottom:18px;}
+
+  footer{
+    padding:40px 0 60px;text-align:center;font-size:12px;color:#666;
+  }
+  footer .fdisclaimer{max-width:480px;margin:0 auto 14px;line-height:1.6;}
+
+  /* STICKY MOBILE CTA */
+  #stickyCta{
+    position:fixed;bottom:0;left:0;right:0;background:#0a0a0a;
+    border-top:1px solid var(--border);padding:12px 16px;
+    display:none;z-index:40;
+  }
+  #stickyCta .btn{width:100%;}
+  @media(max-width:640px){ #stickyCta.show{display:block;} body{padding-bottom:74px;} }
+
+  /* EXIT POPUP */
+  #exitOverlay{
+    position:fixed;inset:0;background:rgba(0,0,0,.75);display:none;
+    align-items:center;justify-content:center;z-index:100;padding:20px;
+  }
+  #exitOverlay.show{display:flex;}
+  #exitModal{
+    background:var(--card);border:1px solid var(--border);border-radius:12px;
+    max-width:420px;width:100%;padding:32px 28px;text-align:center;position:relative;
+  }
+  #exitModal h3{font-size:22px;margin-bottom:14px;}
+  #exitModal p{font-size:14.5px;color:#d0d0d0;margin-bottom:22px;}
+  #exitClose{
+    position:absolute;top:12px;right:14px;background:none;border:none;color:var(--text-dim);
+    font-size:20px;cursor:pointer;
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<section id="hero">
+  <div class="wrap">
+    <div class="eyebrow"><span class="dot"></span> MODO PRAGMÁTICO</div>
+    <h1>No hay un camino fácil.<br>Vas a sufrir igual —<br><span class="accent">la pregunta es con qué resultado.</span></h1>
+    <p class="lead">Una guía corta y directa para dejar de posponer el dolor que ya tenés, y empezar a elegir el que te lleva a algún lado.</p>
+    <a href="#offer" class="btn">Quiero la guía — $5.990</a>
+    <div class="microcopy">PDF · Entrega en menos de 12 hs · Pago seguro con MercadoPago</div>
+  </div>
+</section>
+
+<!-- ============ AGITACIÓN ============ -->
+<section class="section">
+  <div class="wrap">
+    <h2 style="font-size:26px; text-align:center; margin-bottom:8px;">Ya estás sufriendo.<br>Eso no es lo que elegís vos.</h2>
+    <ul class="pain-list">
+      <li>Postergás la decisión difícil, y sufrís la incertidumbre de no decidir.</li>
+      <li>Te quedás en lo que ya sabés que no funciona, y sufrís la frustración de no moverte.</li>
+      <li>Evitás la conversación incómoda, y sufrís la tensión de seguir evitándola.</li>
+    </ul>
+    <p class="punch">El dolor no es opcional. Lo vas a tener de una forma u otra.
+      <span class="accent">Lo único que elegís es cuál.</span>
+    </p>
+  </div>
+</section>
+
+<!-- ============ MECANISMO ============ -->
+<section class="section section-alt">
+  <div class="wrap">
+    <h2 style="font-size:26px; text-align:center;">Elegí tu difícil</h2>
+    <div class="split">
+      <div class="split-card">
+        <h3>El difícil de quedarte</h3>
+        <p>Seguir postergando, evitando, acomodándote a lo que ya sabés que no funciona. Duele todos los días, un poco, sin fecha de vencimiento.</p>
+      </div>
+      <div class="split-card">
+        <h3>El difícil de moverte</h3>
+        <p>Asumir responsabilidad, bancarte la presión, construir algo distinto. Duele fuerte, pero tiene fecha de salida.</p>
+      </div>
+    </div>
+    <p class="punch" style="margin-top:26px;">Los dos duelen. <span class="accent">Solo uno te lleva a algún lado.</span></p>
+  </div>
+</section>
+
+<!-- ============ QUÉ INCLUYE ============ -->
+<section class="section">
+  <div class="wrap">
+    <h2 style="font-size:24px;">Qué vas a encontrar adentro</h2>
+    <ul class="includes">
+      <li><span class="chk">✓</span> Por qué no existe una vida sin problemas — y por qué buscar "una vida fácil" te está trabando más de lo que pensás.</li>
+      <li><span class="chk">✓</span> Cómo identificar cuál es tu difícil real, y cuál es solo miedo disfrazado de prudencia.</li>
+      <li><span class="chk">✓</span> El rol de la responsabilidad: dejar de esperar que la solución te la traiga alguien de afuera.</li>
+      <li><span class="chk">✓</span> Disciplina y sacrificio, sin culpa ni discurso motivacional vacío.</li>
+      <li><span class="chk">✓</span> Cómo se construye resiliencia real — no la de frase de cuadro colgado en la pared.</li>
+      <li><span class="chk">✓</span> Ejercicios cortos para aplicar cada idea a tu situación actual, no en abstracto.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ CALIFICA ============ -->
+<section class="section section-alt">
+  <div class="wrap">
+    <h2 style="font-size:24px;">Es para vos si...</h2>
+    <div class="qual-grid">
+      <div class="qual-row qual-yes">✅ Sentís que estás postergando algo importante hace demasiado tiempo.</div>
+      <div class="qual-row qual-yes">✅ Estás cansado de leer autoayuda que no te da nada concreto para hacer.</div>
+      <div class="qual-row qual-yes">✅ Preferís que te digan las cosas directo, sin vueltas.</div>
+      <div class="qual-row qual-no">🚫 No es para vos si buscás una lectura larga, motivacional, sin nada de acción concreta.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ OFERTA ============ -->
+<section id="offer" class="section">
+  <div class="wrap">
+    <h2 style="font-size:26px; text-align:center;">Llevate la guía</h2>
+
+    <div class="offer-card">
+      <span class="badge">Precio de lanzamiento</span>
+      <div class="offer-title">Elegí tu difícil — PDF</div>
+      <p style="font-size:13.5px; color:var(--text-dim);">Entrega por email en menos de 12 hs desde el pago.</p>
+
+      <div class="price-row">
+        <span class="price-now" id="mainPrice">$5.990</span>
+      </div>
+
+      <div class="bump">
+        <label>
+          <input type="checkbox" id="bumpCheck">
+          <span>Sí, quiero <b>las 9 guías completas</b> de Modo Pragmático (Trampas mentales, Decisiones, Acción, Amor y relaciones, Dinero, Trabajo y negocios, Sentido y dirección, Asistente de IA, y esta) por <b>$9.990</b> en vez de comprarlas por separado.</span>
+        </label>
+      </div>
+
+      <div class="total-row">
+        <span>Total</span>
+        <span id="totalPrice">$5.990</span>
+      </div>
+
+      <a href="#" id="ctaBuy" class="btn btn-block" target="_blank" rel="noopener">Quiero mi guía ahora</a>
+
+      <div class="trust-row">
+        <div>📩 Recibís el PDF por email en menos de 12 horas.</div>
+        <div>🔒 Pago seguro con MercadoPago.</div>
+        <div>🙅 No es terapia ni reemplaza atención profesional — es una herramienta de reflexión y acción.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="section section-alt">
+  <div class="wrap">
+    <h2 style="font-size:24px; margin-bottom:6px;">Preguntas frecuentes</h2>
+
+    <div class="faq-item">
+      <button class="faq-q">¿En qué formato viene? <span class="plus">+</span></button>
+      <div class="faq-a"><p>PDF. Se lee desde el celu, la tablet o la compu, sin necesitar ninguna app rara.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">¿Cuánto tarda en llegar? <span class="plus">+</span></button>
+      <div class="faq-a"><p>Hasta 12 horas desde que se acredita el pago — normalmente antes. Te llega por email.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">¿Esto reemplaza terapia? <span class="plus">+</span></button>
+      <div class="faq-a"><p>No. Es una herramienta práctica de reflexión y acción para el día a día. Si estás atravesando algo serio, buscá siempre ayuda profesional.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">¿Y si compro las 9 y no me sirven todas ahora? <span class="plus">+</span></button>
+      <div class="faq-a"><p>Cada guía es corta y va directo al grano. No hace falta leerlas todas de una — las usás cuando las necesitás, cada una para un momento distinto.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">¿Puedo pagar desde fuera de Argentina? <span class="plus">+</span></button>
+      <div class="faq-a"><p>Por ahora el cobro es a través de MercadoPago Argentina. Si estás en otro país, escribinos por Instagram y vemos una alternativa.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap fdisclaimer">
+    Modo Pragmático es una herramienta de reflexión y acción — no un servicio de salud mental ni un sustituto de atención profesional.
+  </div>
+  <div>© Modo Pragmático · <a href="#" style="color:var(--text-dim);">Instagram</a></div>
+</footer>
+
+<!-- ============ STICKY CTA MOBILE ============ -->
+<div id="stickyCta">
+  <a href="#offer" class="btn">Quiero la guía — $5.990</a>
+</div>
+
+<!-- ============ EXIT INTENT POPUP ============ -->
+<div id="exitOverlay">
+  <div id="exitModal">
+    <button id="exitClose">×</button>
+    <h3>¿Te vas sin elegir?</h3>
+    <p>Ni siquiera esto lo vas a decidir por default. Antes de irte, llevate 3 preguntas del libro para pensar hoy mismo — gratis.</p>
+    <a href="https://instagram.com/modo.pragmatico" target="_blank" rel="noopener" class="btn btn-block">Mandámelas por Instagram</a>
+  </div>
+</div>
+
+<script>
+/* ====== CONFIG — reemplazá estos links por tus links reales de MercadoPago ====== */
+const LINK_SINGLE = "https://mpago.la/TU-LINK-DEL-EBOOK-SUELTO";
+const LINK_BUNDLE = "https://mpago.la/TU-LINK-DEL-PACK-COMPLETO";
+
+const bumpCheck = document.getElementById('bumpCheck');
+const totalPrice = document.getElementById('totalPrice');
+const ctaBuy = document.getElementById('ctaBuy');
+
+function updateOffer(){
+  if(bumpCheck.checked){
+    totalPrice.textContent = "$9.990";
+    ctaBuy.textContent = "Quiero las 9 guías ahora";
+    ctaBuy.href = LINK_BUNDLE;
+  } else {
+    totalPrice.textContent = "$5.990";
+    ctaBuy.textContent = "Quiero mi guía ahora";
+    ctaBuy.href = LINK_SINGLE;
+  }
+}
+bumpCheck.addEventListener('change', updateOffer);
+updateOffer();
+
+/* ====== FAQ accordion ====== */
+document.querySelectorAll('.faq-item').forEach(item=>{
+  const q = item.querySelector('.faq-q');
+  const a = item.querySelector('.faq-a');
+  q.addEventListener('click', ()=>{
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i=>{
+      i.classList.remove('open');
+      i.querySelector('.faq-a').style.maxHeight = null;
+    });
+    if(!isOpen){
+      item.classList.add('open');
+      a.style.maxHeight = a.scrollHeight + "px";
+    }
+  });
+});
+
+/* ====== Sticky mobile CTA (aparece al scrollear pasado el hero) ====== */
+const stickyCta = document.getElementById('stickyCta');
+const offerSection = document.getElementById('offer');
+window.addEventListener('scroll', ()=>{
+  const heroBottom = document.getElementById('hero').offsetHeight;
+  const offerTop = offerSection.offsetTop;
+  const scrolled = window.scrollY + window.innerHeight;
+  if(window.scrollY > heroBottom && scrolled < offerTop + 100){
+    stickyCta.classList.add('show');
+  } else {
+    stickyCta.classList.remove('show');
+  }
+});
+
+/* ====== Exit intent popup (desktop: mouse sale por arriba; mobile: fallback por tiempo) ====== */
+const exitOverlay = document.getElementById('exitOverlay');
+let exitShown = false;
+function showExit(){
+  if(exitShown) return;
+  exitShown = true;
+  exitOverlay.classList.add('show');
+}
+document.addEventListener('mouseout', (e)=>{
+  if(e.clientY <= 0) showExit();
+});
+document.getElementById('exitClose').addEventListener('click', ()=>{
+  exitOverlay.classList.remove('show');
+});
+exitOverlay.addEventListener('click', (e)=>{
+  if(e.target === exitOverlay) exitOverlay.classList.remove('show');
+});
+</script>
+
+</body>
+</html>
